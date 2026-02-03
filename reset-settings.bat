@@ -1,0 +1,3 @@
+@echo off
+echo Resetting Chatbot Settings...
+start "" "reset.html"

@@ -1,0 +1,3 @@
+@echo off
+echo Opening AI Assistant Chatbot...
+start "" "index.html"
