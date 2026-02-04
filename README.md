@@ -1,48 +1,99 @@
-# AI Assistant Chatbot
+# AI Assistant Chatbot (React)
 
-A beautiful, intelligent chatbot with a modern UI powered by Groq AI for answering questions and having conversations.
+A beautiful, intelligent chatbot built with **React** and powered by **Groq AI** for answering questions and having conversations.
 
 ![AI Assistant](https://img.shields.io/badge/AI-Powered-blue)
-![License](https://img.shields.io/badge/license-MIT-green)
+![React](https://img.shields.io/badge/React-19.2.0-61dafb)
+![Vite](https://img.shields.io/badge/Vite-7.2.4-646cff)
+![License](https://img.shields.io/badge/license-ISC-green)
 
 ## ✨ Features
 
 - 🎨 **Modern, Premium UI** - Beautiful dark theme with smooth animations and gradients
+- ⚛️ **React Powered** - Modern component-based architecture
 - 🤖 **AI-Powered** - Uses Groq's fast and free AI API
 - 💬 **Natural Conversations** - Friendly, helpful responses to your questions
 - 💾 **Chat History** - Automatically saves your conversations locally
 - 📱 **Responsive Design** - Works perfectly on desktop, tablet, and mobile
 - ⚡ **Fast Responses** - Powered by Groq's ultra-fast inference
-- 🎯 **Easy to Use** - Simple setup, just add your API key and start chatting
+- 🔒 **Secure API Key** - Stored in `.env` file (not committed to GitHub)
+- 📧 **Contact Form** - Integrated email functionality
 
 ## 🚀 Quick Start
 
-### 1. Get Your Free API Key
+### 1. Clone the Repository
 
-1. Visit [console.groq.com](https://console.groq.com)
-2. Sign up for a free account
-3. Navigate to API Keys section
-4. Create a new API key
-5. Copy the key (you'll need it in step 3)
+```bash
+git clone <your-repo-url>
+cd ChatBot
+```
 
-### 2. Open the Chatbot
+### 2. Install Dependencies
 
-Simply open `index.html` in your web browser:
-- Double-click the file, or
-- Right-click → Open with → Your browser
+```bash
+npm install
+```
 
-### 3. Configure Settings
+### 3. Set Up Your API Key
 
-1. Click the ⚙️ settings icon in the top-right corner
-2. Paste your Groq API key
-3. Select your preferred AI model (Mixtral 8x7B recommended)
-4. Click "Save Settings"
+**Option A: Use Your Own API Key (Recommended)**
 
-### 4. Start Chatting!
+1. Get your free API key from [console.groq.com](https://console.groq.com)
+2. Copy `.env.example` to `.env`:
+   ```bash
+   cp .env.example .env
+   ```
+3. Open `.env` and add your API key:
+   ```env
+   VITE_GROQ_API_KEY=gsk_your_actual_api_key_here
+   ```
+
+**Option B: Let Users Enter Their Own Key**
+
+Leave the `.env` file empty or don't create it. Users will need to enter their API key in the Settings modal.
+
+📖 **Detailed Setup Guide:** See [SETUP-API-KEY.md](SETUP-API-KEY.md)
+
+### 4. Start the Development Server
+
+```bash
+npm run dev
+```
+
+Open your browser to `http://localhost:5173`
+
+### 5. Start Chatting! 🎉
 
 - Type your question in the input box
 - Press Enter or click the send button
 - Get intelligent, helpful responses instantly
+
+## 📁 Project Structure
+
+```
+ChatBot/
+├── src/
+│   ├── components/          # React components
+│   │   ├── Header.jsx       # Header with logo and actions
+│   │   ├── SettingsModal.jsx    # API key configuration
+│   │   ├── ContactModal.jsx     # Contact form
+│   │   ├── WelcomeScreen.jsx    # Welcome screen
+│   │   ├── ChatMessages.jsx     # Chat display
+│   │   └── InputArea.jsx        # Message input
+│   ├── hooks/               # Custom React hooks
+│   │   ├── useChatState.js      # State management
+│   │   └── useAPIService.js     # API service
+│   ├── App.jsx              # Main App component
+│   ├── App.css              # All styles
+│   └── main.jsx             # React entry point
+├── .env                     # Your API key (NOT in git)
+├── .env.example             # Template for .env
+├── .gitignore               # Git ignore rules
+├── index.html               # HTML entry point
+├── package.json             # Dependencies
+├── vite.config.js           # Vite configuration
+└── README.md                # This file
+```
 
 ## 🎯 What Can You Ask?
 
@@ -56,58 +107,42 @@ The chatbot can help with:
 - **Creative Writing** - "Help me brainstorm story ideas"
 - **And much more!**
 
-## 📁 Project Structure
-
-```
-ChatBot/
-├── index.html      # Main HTML structure
-├── styles.css      # Beautiful styling and animations
-├── script.js       # Application logic and AI integration
-└── README.md       # This file
-```
-
 ## 🛠️ Technical Details
 
-### Technologies Used
+### Tech Stack
 
-- **HTML5** - Semantic structure
-- **CSS3** - Modern styling with CSS variables, gradients, and animations
-- **Vanilla JavaScript** - No frameworks, pure JS
-- **Groq API** - Fast, free AI inference
-- **LocalStorage** - Save chat history and settings
+- **React 19.2.0** - UI library
+- **Vite 7.2.4** - Build tool and dev server
+- **Groq API** - AI model provider
+- **Web3Forms** - Contact form backend
+- **LocalStorage** - Persistent storage
 
 ### Available AI Models
 
-- **Llama 3.3 70B** (Recommended) - Best balance of speed and quality
-- **Llama 3.1 8B** - Fastest responses
-- **Llama 3.2 90B Vision** - Advanced with vision capabilities
+- **Llama 3.3 70B Versatile** (Recommended) - Best balance of speed and quality
+- **Llama 3.1 8B Instant** - Fastest responses
 - **Gemma 2 9B** - Efficient and accurate
+- **Qwen 3 32B** - Advanced reasoning
 
-### Features in Detail
+### React Architecture
 
-#### State Management
-- Saves API key and model preference
-- Stores complete chat history
-- Persists across browser sessions
+#### Components
+- **Header** - Navigation and action buttons
+- **SettingsModal** - API key and model configuration
+- **ContactModal** - Two-step contact form (LinkedIn/Email)
+- **WelcomeScreen** - Initial screen with suggestions
+- **ChatMessages** - Message display with typing indicator
+- **InputArea** - Auto-resizing textarea with send button
 
-#### UI/UX
-- Smooth animations and transitions
-- Typing indicator while AI is thinking
-- Auto-scrolling to latest messages
-- Auto-resizing input textarea
-- Notification system for errors and confirmations
-
-#### Message Formatting
-- Supports **bold** text with `**text**`
-- Supports *italic* text with `*text*`
-- Supports `inline code` with backticks
-- Automatic line break handling
+#### Custom Hooks
+- **useChatState** - Manages chat state, localStorage, API key
+- **useAPIService** - Handles Groq API communication
 
 ## 🎨 Customization
 
 ### Change Color Scheme
 
-Edit the CSS variables in `styles.css`:
+Edit CSS variables in `src/App.css`:
 
 ```css
 :root {
@@ -120,7 +155,7 @@ Edit the CSS variables in `styles.css`:
 
 ### Modify AI Personality
 
-Edit the `SYSTEM_PROMPT` in `script.js` to change how the AI responds:
+Edit the `SYSTEM_PROMPT` in `src/hooks/useChatState.js`:
 
 ```javascript
 SYSTEM_PROMPT: `You are a helpful, friendly assistant...`
@@ -128,45 +163,90 @@ SYSTEM_PROMPT: `You are a helpful, friendly assistant...`
 
 ### Add More Suggestion Cards
 
-In `index.html`, add more quick-start suggestions:
+Edit the `suggestions` array in `src/components/WelcomeScreen.jsx`:
 
-```html
-<button class="suggestion-card" data-question="Your question here">
-    <span class="suggestion-icon">🎯</span>
-    <span>Your Topic</span>
-</button>
+```javascript
+const suggestions = [
+  { icon: '🎯', text: 'Your Topic', question: 'Your question here' },
+  // Add more...
+];
 ```
 
-## 🔒 Privacy & Security
+## 🔒 Security & Privacy
 
-- **All data is stored locally** - Your conversations never leave your browser
-- **API key is stored securely** - Only in your browser's localStorage
+### API Key Security
+
+✅ **What's Protected:**
+- `.env` file is in `.gitignore` - Won't be pushed to GitHub
+- API key not visible in source code
+- Safe to share your repository
+
+⚠️ **Important Note:**
+- This is a client-side app, so the API key is still sent to the browser
+- Anyone can see it in browser DevTools → Network tab
+- Perfect for personal projects, portfolios, and demos
+- For production with many users, consider a backend API
+
+### Privacy
+
+- **All data is stored locally** - Conversations never leave your browser
 - **No tracking** - No analytics or third-party scripts
 - **Open source** - Review the code yourself
 
+## 📦 Build for Production
+
+```bash
+npm run build
+```
+
+This creates an optimized production build in the `dist/` folder.
+
+### Deploy
+
+You can deploy to:
+- **Vercel**: `vercel deploy`
+- **Netlify**: Drag & drop `dist/` folder
+- **GitHub Pages**: Use `gh-pages` package
+- **Any static hosting**: Upload `dist/` folder
+
+**Important:** Make sure to set the `VITE_GROQ_API_KEY` environment variable in your hosting platform's settings!
+
 ## 🐛 Troubleshooting
 
-### "Please set your API key" error
-- Make sure you've entered a valid Groq API key in settings
-- Check that you copied the entire key without spaces
+### API Key Not Working?
 
-### No response from AI
-- Verify your API key is correct
-- Check your internet connection
-- Try a different AI model
-- Check the browser console for errors (F12)
+1. **Check .env file format:**
+   ```env
+   VITE_GROQ_API_KEY=gsk_your_key_here
+   ```
+   - No spaces around `=`
+   - No quotes needed
+   - Must start with `VITE_`
 
-### Chat history not saving
-- Make sure your browser allows localStorage
-- Check if you're in private/incognito mode (localStorage is disabled)
+2. **Restart dev server:**
+   ```bash
+   # Stop server (Ctrl+C)
+   npm run dev
+   ```
 
-### Styling looks broken
-- Make sure all three files (HTML, CSS, JS) are in the same folder
-- Clear your browser cache and reload
+3. **Check browser console** (F12) for errors
 
-## 📝 License
+### Chat History Not Saving?
 
-This project is open source and available under the MIT License.
+- Check if browser allows localStorage
+- Not in private/incognito mode
+
+### Styling Looks Broken?
+
+- Clear browser cache
+- Run `npm install` again
+- Delete `node_modules` and reinstall
+
+## 📚 Documentation
+
+- **[SETUP-API-KEY.md](SETUP-API-KEY.md)** - Detailed API key setup guide
+- **[REACT-CONVERSION.md](REACT-CONVERSION.md)** - React conversion details
+- **[Groq API Docs](https://console.groq.com/docs)** - Official API documentation
 
 ## 🤝 Contributing
 
@@ -179,15 +259,19 @@ Feel free to:
 ## 🌟 Credits
 
 - **AI Provider**: [Groq](https://groq.com)
+- **Contact Form**: [Web3Forms](https://web3forms.com)
 - **Icons**: Custom SVG icons
 - **Fonts**: [Google Fonts - Inter](https://fonts.google.com/specimen/Inter)
 
-## 📞 Support
+## 📄 License
 
-If you encounter any issues or have questions:
-1. Check the Troubleshooting section above
-2. Review the [Groq API documentation](https://console.groq.com/docs)
-3. Check browser console for error messages
+ISC
+
+## 👨‍💻 Author
+
+Anoop Yadav
+- LinkedIn: [anoop-yadav-232808329](https://www.linkedin.com/in/anoop-yadav-232808329/)
+- Email: anoopyadav5984@gmail.com
 
 ---
 
