@@ -2,9 +2,10 @@ import { useState, useEffect } from 'react';
 
 const CONFIG = {
     VERSION: '1.1.0',
-    // 🔑 DEFAULT API KEY - Loaded from .env file (VITE_GROQ_API_KEY)
-    // This keeps your API key secure and out of GitHub
-    // Users can still override this by entering their own key in Settings
+    // 🔑 DEFAULT API KEY
+    // Priority: 1. User's saved key → 2. Environment variable → 3. Empty (user must set via settings)
+    // For local development: Create a .env file with VITE_GROQ_API_KEY=your_key_here
+    // For deployment: Set the environment variable in your hosting platform
     DEFAULT_API_KEY: import.meta.env.VITE_GROQ_API_KEY || '',
     STORAGE_KEYS: {
         API_KEY: 'groq_api_key',

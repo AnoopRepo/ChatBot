@@ -62,13 +62,17 @@ function App() {
       return;
     }
 
-    // Add user message
+    // Capture current messages BEFORE adding the new user message
+    // This ensures the API gets the correct context at this moment
+    const currentMessages = messages;
+    
+    // Add user message to UI
     addMessage('user', message);
     setIsTyping(true);
 
     try {
-      // Get AI response
-      const response = await sendMessage(message);
+      // Get AI response - pass the messages state from BEFORE the user message was added
+      const response = await sendMessage(message, currentMessages);
       addMessage('assistant', response);
     } catch (error) {
       console.error('Error:', error);
